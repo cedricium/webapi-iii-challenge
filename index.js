@@ -1,8 +1,7 @@
 const server = require('./server')
 
-/**
- * TODO:
- * 
- *  - make server listen on specific port
- *  - start server
- */
+const PORT = process.env.PORT || 5000
+
+server.listen(PORT, () => {
+  console.log(`server listening on port ${PORT}`)
+})
