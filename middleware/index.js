@@ -1,23 +1,31 @@
-export const logger = (req, res, next) => {
+const logger = (req, res, next) => {
+  const timestamp = new Date().toTimeString()
+  const { method, url } = req
+  console.log(`${method} ${url} -- ${timestamp}`)
+  next()
+}
+
+const validateUserId = (req, res, next) => {
   /**
    * TODO
    */
 }
 
-export const validateUserId = (req, res, next) => {
+const validateUser = (req, res, next) => {
   /**
    * TODO
    */
 }
 
-export const validateUser = (req, res, next) => {
+const validatePost = (req, res, next) => {
   /**
    * TODO
    */
 }
 
-export const validatePost = (req, res, next) => {
-  /**
-   * TODO
-   */
+module.exports = {
+  logger,
+  validateUserId,
+  validateUser,
+  validatePost,
 }
