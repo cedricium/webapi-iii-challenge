@@ -4,6 +4,7 @@
   "description": "Web API Blog Project",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "server": "nodemon index.js"
   },
   "repository": {
@@ -20,6 +21,9 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/LambdaSchool/Node-Blog/issues"
+  },
+  "engines": {
+    "yarn": "1.x"
   },
   "homepage": "https://github.com/LambdaSchool/Node-Blog#readme",
   "dependencies": {
