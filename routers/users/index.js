@@ -1,6 +1,9 @@
 const router = require('express').Router()
+const postsRouter = require('../posts')
 const db = require('../../users/userDb')
 const { validateUserId, validateUser } = require('../../middleware')
+
+router.use('/:id/posts', validateUserId, postsRouter)
 
 router.get('/', async (req, res) => {
   try {
