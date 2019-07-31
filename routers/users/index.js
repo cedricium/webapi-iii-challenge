@@ -2,8 +2,17 @@ const router = require('express').Router()
 const db = require('../../users/userDb')
 const { validateUserId, validateUser } = require('../../middleware')
 
-router.get('/', (req, res) => {
-
+router.get('/', async (req, res) => {
+  try {
+    const users = await db.get()
+    res.status(200).json({
+      users
+    })
+  } catch (error) {
+    res.status(500).json({
+      error: `An error occurred while attempting to get users`
+    })
+  }
 })
 
 router.get('/:id', validateUserId, (req, res) => {
