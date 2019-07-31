@@ -44,8 +44,17 @@ router.delete('/:id', validateUserId, async (req, res) => {
   }
 })
 
-router.put('/:id', (req, res) => {
-
+router.put('/:id', validateUserId, validateUser, async (req, res) => {
+  try {
+    const { id } = req.user
+    const { name } = req.body
+    await db.update(id, { name })
+    res.status(204).end()
+  } catch (error) {
+    res.status(500).json({
+      error: `An error occurred while attempting to update user`
+    })
+  }
 })
 
 module.exports = router
