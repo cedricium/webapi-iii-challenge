@@ -32,8 +32,16 @@ router.post('/', validateUser, async (req, res) => {
   }
 })
 
-router.delete('/:id', (req, res) => {
-
+router.delete('/:id', validateUserId, async (req, res) => {
+  try {
+    const { id } = req.user
+    await db.remove(id)
+    res.status(204).end()
+  } catch (error) {
+    res.status(500).json({
+      error: `An error occurred while attempting to delete user`
+    })
+  }
 })
 
 router.put('/:id', (req, res) => {
