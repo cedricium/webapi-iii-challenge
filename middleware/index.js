@@ -27,9 +27,19 @@ const validateUserId = async (req, res, next) => {
 }
 
 const validateUser = (req, res, next) => {
-  /**
-   * TODO
-   */
+  const { body } = req
+  if (Object.keys(body).length === 0) {
+    return res.status(400).json({
+      message: `Missing user data`
+    })
+  }
+  const { name } = body
+  if (!name) {
+    return res.status(400).json({
+      message: `Missing required field: name`
+    })
+  }
+  next()
 }
 
 const validatePost = (req, res, next) => {
